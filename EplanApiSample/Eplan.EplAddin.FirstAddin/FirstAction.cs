@@ -20,7 +20,7 @@ namespace Eplan.EplAddin.FirstAddin
         {
             // TODO: 
             // Add code
-            //System.Windows.Forms.MessageBox.Show("FirstAction was called!" );
+            System.Windows.Forms.MessageBox.Show("FirstAction was called!" );
 
             return true;
         }
@@ -46,17 +46,14 @@ namespace Eplan.EplAddin.FirstAddin
         public void GetActionProperties(ref ActionProperties actionProperties)
         {
             // Description 1st parameter
-            // ActionParameterProperties firstParam= new ActionParameterProperties();
-            // firstParam.set("Param1", "1. Parameter for FirstAction"); 
-            // actionProperties.addParameter(firstParam);
+            ActionParameterProperties firstParam = new ActionParameterProperties();
+            firstParam.Set("1. Parameter for FirstAction");
+            actionProperties.AddParameter(firstParam);
 
             // Description 2nd parameter
-            // ActionParameterProperties firstParam= new ActionParameterProperties();
-            // firstParam.set("Param2", "2. Parameter for FirstAction"); 
-            // actionProperties.addParameter(firstParam);
-
+            ActionParameterProperties secondParam = new ActionParameterProperties();
+            secondParam.Set("2. Parameter for FirstAction");
+            actionProperties.AddParameter(secondParam);
         }
-
     }
-
 }
