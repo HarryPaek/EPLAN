@@ -10,17 +10,28 @@ namespace Eplan.EplAddin.FirstAddin
     /// This class implements a EPLAN action.  The Action will register the Addins in that  <seealso cref="IEplAddIn.OnRegister"/> Registerst.
     /// <seealso cref="Eplan::EplApi::ApplicationFramework::IEplAction"/> 
     /// </summary>
-    public class FirstAction : IEplAction
+    public class FirstAction : IEplAction, IEplActionEnable
     {
+        #region IEplAction Members
+
         /// <summary>
         /// Execution of the Action.  
         /// </summary>
         /// <returns>True:  Execution of the Action was successful</returns>
         public bool Execute(ActionCallingContext ctx)
         {
-            // TODO: 
+            String strParamValue = null;
+            ctx.GetParameter("Param1", ref strParamValue);
+
+            // use string parameter ...
             // Add code
             System.Windows.Forms.MessageBox.Show("FirstAction was called!" );
+
+
+            // fill parameter "ReturnParam" with value "return value".
+            // the caller of this action can extract the parameter by ctx.getParameter("ReturnParam", ...)
+            String strReturnValue = "Return Value";
+            ctx.AddParameter("ReturnParam", strReturnValue);
 
             return true;
         }
@@ -55,5 +66,19 @@ namespace Eplan.EplAddin.FirstAddin
             secondParam.Set("2. Parameter for FirstAction");
             actionProperties.AddParameter(secondParam);
         }
+
+        #endregion
+
+        #region IEplActionEnable Members
+
+        public bool Enabled(string strActionName, ActionCallingContext actionContext)
+        {
+            if (strActionName == "TESTACTION")
+                return false;
+            else
+                return true;
+        }
+
+        #endregion
     }
 }

@@ -1,0 +1,9 @@
+EPLAN.EXE /Variant:"Electric P8" /NoLoadWorkspace FirstAction /Param1:ParamValue1
+EPLAN.EXE /Variant:"Electric P8" FirstAction /Param1:ParamValue1
+
+EPLAN.EXE /Variant:"Electric P8" /Auto FirstAction /Param1:ParamValue1
+
+EPLAN.EXE /Variant:"Electric P8" /Quiet FirstAction /Param1:ParamValue1
+
+EPLAN.EXE /Variant:"Electric P8" /Frame:0 /Auto FirstAction /Param1:ParamValue1
+EPLAN.EXE /Variant:"Electric P8" /Frame:2 FirstAction /Param1:ParamValue1
