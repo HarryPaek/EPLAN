@@ -23,8 +23,8 @@ namespace Eplan.EplAddin.Test
         public bool OnInitGui()
         {
             Menu menu = new Menu();
-            var menuId = menu.AddMainMenu("Test", Menu.MainMenuName.eMainMenuOptions, "Login", "ActionLogin", "", 0);
-            menu.AddMenuItem("Checkin", "ActionCheckin", "", menuId, 1, true, true);
+            var menuId = menu.AddMainMenu("Test", Menu.MainMenuName.eMainMenuOptions, "Login", "ActionLogin", "Test Login Menu...", 1);
+            menuId = menu.AddMenuItem("Checkin", "ActionCheckin", "", menuId, 1, true, true);
             menu.AddMenuItem("Checkout", "ActionCheckout", "", menuId, 2, false, false);
 
             return true;
