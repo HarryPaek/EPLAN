@@ -11,8 +11,6 @@ namespace Eplan.ConfigurationTools
 {
     public class ConfiguratuionHelper
     {
-        static string _configFilePath = string.Empty;
-
         public static Configuration GetConfiguration(string configPath)
         {
             if (string.IsNullOrWhiteSpace(configPath) || !File.Exists(configPath))
@@ -31,23 +29,10 @@ namespace Eplan.ConfigurationTools
             get { return @".\Config\EPLAN_CustomConfig.config"; }
         }
 
-        public static string GetExecutingAssemblyConfigFileName
+        public static string GetExecutingAssemblyConfigFileName()
         {
-            get
-            {
-                if (string.IsNullOrEmpty(_configFilePath))
-                {
-                    Assembly exeAssembly = Assembly.GetExecutingAssembly();
-                    _configFilePath = string.Format("{0}.config", exeAssembly.ManifestModule.Name);
-                }
-
-                return _configFilePath;
-            }
-
-            internal set
-            {
-                _configFilePath = value;
-            }
+            Assembly exeAssembly = Assembly.GetExecutingAssembly();
+            return string.Format("{0}.config", exeAssembly.ManifestModule.Name);
         }
     }
 }
