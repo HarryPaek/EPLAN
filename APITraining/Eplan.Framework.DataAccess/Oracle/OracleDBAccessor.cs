@@ -31,8 +31,11 @@ namespace Eplan.Framework.DataAccess.Oracle
         /// <param name="connectionStringName"></param>
         public OracleDBAccessor(string connectionStringName)
         {
-            //string connectionString = ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
-            string connectionString = ConfiguratuionHelper.GetConfiguration(string.Empty).ConnectionStrings.ConnectionStrings[connectionStringName].ConnectionString;
+            Configuration configuration = ConfiguratuionHelper.GetConfiguration(string.Empty);
+            ConfigurationSection oracleSection = configuration.GetSection("oracle.manageddataaccess.client");
+
+            string connectionString = configuration.ConnectionStrings.ConnectionStrings[connectionStringName].ConnectionString;
+
             _connection = new OracleConnection(connectionString);
         }
 

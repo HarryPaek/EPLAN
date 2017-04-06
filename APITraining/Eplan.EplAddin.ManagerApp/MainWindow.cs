@@ -23,19 +23,19 @@ namespace Eplan.EplAddin.ManagerApp
 
         private void btnConfiguration_Click(object sender, EventArgs e)
         {
-            var oracleConnection = ConfigurationManager.ConnectionStrings["OracleConnection"];
+            var ConnectionStrings = ConfiguratuionHelper.GetConfiguration(string.Empty).ConnectionStrings;
 
-            if (oracleConnection != null)
-                MessageBox.Show(ConfigurationManager.ConnectionStrings["OracleConnection"].ConnectionString, "Oracle Connection Info");
+            if(ConnectionStrings != null && ConnectionStrings.ConnectionStrings["OracleConnection"] != null)
+                MessageBox.Show(string.Format("Oracle Connection Definition = [{0}]", ConnectionStrings.ConnectionStrings["OracleConnection"].ConnectionString), "Oracle Connection Info");
             else
                 MessageBox.Show("There is no Oracle connection information defined!", "Oracle Connection Info");
         }
 
         private void btnDB_Click(object sender, EventArgs e)
         {
-            IDBAccessor db = new OracleDBAccessor();
+            IDBAccessor db = new OracleDBAccessor("DBConnection");
 
-            db.ExecuteReader("select * from EMP");
+            var result = db.ExecuteReader("select * from EMP");
         }
 
         private void btnLogging_Click(object sender, EventArgs e)
@@ -48,8 +48,7 @@ namespace Eplan.EplAddin.ManagerApp
             Configuration configuration = ConfiguratuionHelper.GetConfiguration(string.Empty);
             ConfigurationSection oracleSection = configuration.GetSection("oracle.manageddataaccess.client");
 
-            Configuration managerConfiguration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            MessageBox.Show(managerConfiguration.FilePath, "Manager Configuration");
+            MessageBox.Show(string.Format("Config File Path = [{0}]", ConfiguratuionHelper.GetCustomConfigFilePath()), "Custom Configuration File Path");
 
             string configFileName = ConfiguratuionHelper.GetExecutingAssemblyConfigFileName();
         }

@@ -11,28 +11,68 @@ namespace Eplan.ConfigurationTools
 {
     public class ConfiguratuionHelper
     {
+        private const string defaultCustomConfigFilePath = @"Config\EPLAN_CustomConfig.config";
+
+        private static Configuration _configuration = null;
+        private static string customConfigFilePath = string.Empty;
+
         public static Configuration GetConfiguration(string configPath)
         {
-            if (string.IsNullOrWhiteSpace(configPath) || !File.Exists(configPath))
-                configPath = DefaultCustomConfigFilePath;
-
-            ExeConfigurationFileMap fileMap = new ExeConfigurationFileMap()
+            if(_configuration == null)
             {
-                ExeConfigFilename = configPath
-            };
+                customConfigFilePath = InternalGetCustomConfigFilePath(configPath);
+
+                ExeConfigurationFileMap fileMap = new ExeConfigurationFileMap()
+                {
+                    ExeConfigFilename = customConfigFilePath
+                };
+
+                _configuration = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
+            }
       
-            return ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
+            return _configuration;
         }
 
-        public static string DefaultCustomConfigFilePath
+        public static string GetCustomConfigFilePath()
         {
-            get { return @".\Config\EPLAN_CustomConfig.config"; }
+            return GetCustomConfigFilePath(string.Empty);
+        }
+
+        public static string GetCustomConfigFilePath(string configPath)
+        {
+            if (string.IsNullOrWhiteSpace(customConfigFilePath))
+                GetConfiguration(configPath);
+
+            return customConfigFilePath;
+        }
+
+        private static string InternalGetCustomConfigFilePath(string configurationFilePath)
+        {
+            if (string.IsNullOrWhiteSpace(configurationFilePath))
+                return GetDefaultCustomConfigFilePath();
+
+            if (Path.IsPathRooted(configurationFilePath))
+                return configurationFilePath;
+
+            return Path.Combine(GetCurrentExecutingFolder(), configurationFilePath);
+        }
+
+        private static string GetDefaultCustomConfigFilePath()
+        {
+            return Path.Combine(GetCurrentExecutingFolder(), defaultCustomConfigFilePath);
         }
 
         public static string GetExecutingAssemblyConfigFileName()
         {
             Assembly exeAssembly = Assembly.GetExecutingAssembly();
             return string.Format("{0}.config", exeAssembly.ManifestModule.Name);
+        }
+
+        private static string GetCurrentExecutingFolder()
+        {
+            Assembly exeAssembly = Assembly.GetExecutingAssembly();
+
+            return Path.GetDirectoryName(exeAssembly.Location);
         }
     }
 }
