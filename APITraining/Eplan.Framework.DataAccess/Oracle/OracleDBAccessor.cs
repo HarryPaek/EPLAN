@@ -223,5 +223,11 @@ namespace Eplan.Framework.DataAccess.Oracle
         }
   
         #endregion
+
+
+        public DataTable ExecuteSelect(string commandText, Dictionary<string, object> parameters = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

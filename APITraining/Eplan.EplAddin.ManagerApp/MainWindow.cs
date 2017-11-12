@@ -1,5 +1,6 @@
 ﻿using Eplan.ConfigurationTools;
 using Eplan.Framework.Common.Interfaces.DataAccess;
+using Eplan.Framework.DataAccess.Excel;
 using Eplan.Framework.DataAccess.Oracle;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,15 @@ namespace Eplan.EplAddin.ManagerApp
             MessageBox.Show(string.Format("Config File Path = [{0}]", ConfiguratuionHelper.GetCustomConfigFilePath()), "Custom Configuration File Path");
 
             string configFileName = ConfiguratuionHelper.GetExecutingAssemblyConfigFileName();
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            IDBAccessor db = new ExcelDBAccessor("ExcelConnection");
+
+            var resultEmp = db.ExecuteReader("SELECT * FROM [EMP$]");
+            var resultDept = db.ExecuteReader("select * from [DEPT$]");
+            var resultEmpDept = db.ExecuteReader("SELECT e.*, d.DNAME, d.LOC FROM [EMP$] e INNER JOIN [DEPT$] d ON e.DEPTNO = d.DEPTNO");
         }
     }
 }

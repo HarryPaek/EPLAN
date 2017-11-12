@@ -33,6 +33,7 @@
             this.btnDB = new System.Windows.Forms.Button();
             this.btnConfiguration = new System.Windows.Forms.Button();
             this.tboxLoggingArea = new System.Windows.Forms.TextBox();
+            this.btnExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -48,6 +49,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnExcel);
             this.splitContainer1.Panel1.Controls.Add(this.btnLogging);
             this.splitContainer1.Panel1.Controls.Add(this.btnDB);
             this.splitContainer1.Panel1.Controls.Add(this.btnConfiguration);
@@ -100,6 +102,16 @@
             this.tboxLoggingArea.Size = new System.Drawing.Size(784, 294);
             this.tboxLoggingArea.TabIndex = 0;
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(238, 109);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(153, 37);
+            this.btnExcel.TabIndex = 3;
+            this.btnExcel.Text = "Excel Test";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // formMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -125,6 +137,7 @@
         private System.Windows.Forms.Button btnDB;
         private System.Windows.Forms.Button btnConfiguration;
         private System.Windows.Forms.TextBox tboxLoggingArea;
+        private System.Windows.Forms.Button btnExcel;
     }
 }
 
