@@ -10,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,6 +21,8 @@ namespace Eplan.EplAddin.ManagerApp
         public formMainWindow()
         {
             InitializeComponent();
+            // Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            // Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
         }
 
         private void btnConfiguration_Click(object sender, EventArgs e)
