@@ -1,37 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Eplan.EplAddin.FirstAddin.Abstracts;
+using Eplan.EplAddin.FirstAddin.Services;
 using Eplan.EplApi.ApplicationFramework;
 
-namespace Eplan.EplAddin.FirstAddin
+namespace Eplan.EplAddin.FirstAddin.Actions
 {
 
     /// <summary>
     /// This class implements a EPLAN action.  The Action will register the Addins in that  <seealso cref="IEplAddIn.OnRegister"/> Registerst.
     /// <seealso cref="Eplan::EplApi::ApplicationFramework::IEplAction"/> 
     /// </summary>
-    public class FirstAction : IEplAction, IEplActionEnable
+    public class ProjectAction : IEplAction
     {
-        #region IEplAction Members
-
         /// <summary>
         /// Execution of the Action.  
         /// </summary>
         /// <returns>True:  Execution of the Action was successful</returns>
         public bool Execute(ActionCallingContext ctx)
         {
-            String strParamValue = null;
-            ctx.GetParameter("Param1", ref strParamValue);
+            IActionService service = new ProjectActionService();
 
-            // use string parameter ...
-            // Add code
-            System.Windows.Forms.MessageBox.Show("FirstAction was called!" );
-
-
-            // fill parameter "ReturnParam" with value "return value".
-            // the caller of this action can extract the parameter by ctx.getParameter("ReturnParam", ...)
-            String strReturnValue = "Return Value";
-            ctx.AddParameter("ReturnParam", strReturnValue);
+            service.Execute();
 
             return true;
         }
@@ -43,7 +31,7 @@ namespace Eplan.EplAddin.FirstAddin
         /// <returns>true: the return parameters are valid</returns>
         public bool OnRegister(ref string Name, ref int Ordinal)
         {
-            Name = "FirstAction";
+            Name = "ActionProject";
             Ordinal = 20;
             return true;
         }
@@ -57,28 +45,16 @@ namespace Eplan.EplAddin.FirstAddin
         public void GetActionProperties(ref ActionProperties actionProperties)
         {
             // Description 1st parameter
-            ActionParameterProperties firstParam = new ActionParameterProperties();
-            firstParam.Set("1. Parameter for FirstAction");
-            actionProperties.AddParameter(firstParam);
+            // ActionParameterProperties firstParam= new ActionParameterProperties();
+            // firstParam.set("Param1", "1. Parameter for ProjectAction"); 
+            // actionProperties.addParameter(firstParam);
 
             // Description 2nd parameter
-            ActionParameterProperties secondParam = new ActionParameterProperties();
-            secondParam.Set("2. Parameter for FirstAction");
-            actionProperties.AddParameter(secondParam);
+            // ActionParameterProperties firstParam= new ActionParameterProperties();
+            // firstParam.set("Param2", "2. Parameter for ProjectAction"); 
+            // actionProperties.addParameter(firstParam);
+
         }
-
-        #endregion
-
-        #region IEplActionEnable Members
-
-        public bool Enabled(string strActionName, ActionCallingContext actionContext)
-        {
-            if (strActionName == "TESTACTION")
-                return false;
-            else
-                return true;
-        }
-
-        #endregion
     }
+
 }

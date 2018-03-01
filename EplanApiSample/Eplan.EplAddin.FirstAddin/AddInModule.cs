@@ -1,6 +1,5 @@
-
-using System;
 using Eplan.EplApi.ApplicationFramework;
+using Eplan.EplApi.Gui;
 
 namespace Eplan.EplAddin.FirstAddin
 {
@@ -47,8 +46,10 @@ namespace Eplan.EplAddin.FirstAddin
         /// <returns></returns>
         public bool OnInitGui()
         {
-            return true;
+            Menu menu = new Menu();
+            var menuId = menu.AddMainMenu("API Spike", Menu.MainMenuName.eMainMenuHelp, "Project", "ActionProject", "Project API Codes...", 1);
 
+            return true;
         }
         /// <summary>
         /// This function is called during closing P8 or unregistration the add-in. 
