@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvDependency", "AdvDependency\AdvDependency.csproj", "{5B66C9F8-B4AF-4771-96F9-F95C34A3FAEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvMessagePrinter", "AdvMessagePrinter\AdvMessagePrinter.csproj", "{B368AA4E-CF25-46A9-83D1-D0FA46F3DC4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B66C9F8-B4AF-4771-96F9-F95C34A3FAEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B66C9F8-B4AF-4771-96F9-F95C34A3FAEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B66C9F8-B4AF-4771-96F9-F95C34A3FAEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B66C9F8-B4AF-4771-96F9-F95C34A3FAEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B368AA4E-CF25-46A9-83D1-D0FA46F3DC4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B368AA4E-CF25-46A9-83D1-D0FA46F3DC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B368AA4E-CF25-46A9-83D1-D0FA46F3DC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B368AA4E-CF25-46A9-83D1-D0FA46F3DC4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
