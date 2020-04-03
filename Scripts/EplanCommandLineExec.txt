@@ -7,3 +7,8 @@ EPLAN.EXE /Variant:"Electric P8" /Quiet FirstAction /Param1:ParamValue1
 
 EPLAN.EXE /Variant:"Electric P8" /Frame:0 /Auto FirstAction /Param1:ParamValue1
 EPLAN.EXE /Variant:"Electric P8" /Frame:2 FirstAction /Param1:ParamValue1
+
+
+"C:\Program Files\EPLAN28\Platform\2.8.3\Bin\EPLAN.exe" /Variant:"Electric P8" ExecuteScript /ScriptFile:"E:\GitRepositories\EPLAN\Scripts\VerySimpleScript.cs"
+
+"C:\Program Files\EPLAN28\Platform\2.8.3\Bin\EPLAN.exe" /Variant:"Electric P8" ExecuteScript /ScriptFile:"E:\GitRepositories\EPLAN\Scripts\SimpleScriptWithParameters.cs" /Param1:Hello /Param2:EPLAN /Param3:" API Developer!"
